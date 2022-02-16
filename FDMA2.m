@@ -16,8 +16,8 @@ V0 = 1;
 nx = L;
 ny = W;
 G = sparse(nx*ny);
-V = sparse(nx,ny);
-B = sparse(1,nx*ny);
+%V = sparse(nx,ny);
+F = sparse(1,nx*ny);
 
 for i = 1:nx                %Iteration through length
     for j = 1:ny            %Iteration through width
@@ -26,10 +26,11 @@ for i = 1:nx                %Iteration through length
         if i == 1;
             G(n,:) = 0;
             G(n,n) = 1;
-            B(n) = 1;
+            F(n) = 1;
         elseif i == nx
             G(n,:) = 0;
             G(n,n) = 1;
+            F(n) = 0;
 %         elseif j == 1
 %             nxm = j + (i-2)*ny;
 %             nxp = j + (i)*ny;
@@ -59,3 +60,35 @@ for i = 1:nx                %Iteration through length
 end
 figure(1)
 spy(G)
+
+V = G\F';
+
+Vmap = zeros(nx,ny);
+for i = 1:nx
+    for j = 1:ny
+        n = j + (i-1)*ny;
+        Vmap(i,j) = V(n);
+    end
+end
+
+figure(2)
+surf(Vmap)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
