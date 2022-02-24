@@ -66,14 +66,29 @@ for i = 1:nx                %Iteration through length
             nxm = j + (i-2)*ny;
             nxp = j + (i)*ny;
             nyp = j+1 + (i-1)*ny;
+
+            rxm = (cMap(i,j) + cMap(i-1,j))/2;
+            rxp = (cMap(i,j) + cMap(i+1,j))/2;
+            ryp = (cMap(i,j) + cMap(i,j+1))/2;
             
-            G(n,n) = 1;
+            G(n,n) = -(rxm+rxp+ryp);
+            G(n,nxm) = rxm;
+            G(n,nxp) = rxp;
+            G(n,nyp) = ryp;
+
         elseif j == ny                % y=1 BCs
             nxm = j + (i-2)*ny;
             nxp = j + (i)*ny;
             nym = j-1 + (i-1)*ny;
+
+            rxm = (cMap(i,j) + cMap(i-1,j))/2;
+            rxp = (cMap(i,j) + cMap(i+1,j))/2;
+            rym = (cMap(i,j) + cMap(i,j-1))/2;
             
-            G(n,n) = 1;
+            G(n,n) = -(rxm+rxp+rym);
+            G(n,nxm) = rxm;
+            G(n,nxp) = rxp;
+            G(n,nym) = rym;
             
             
 % COMMENT ABOVE FOR 1a
@@ -83,12 +98,17 @@ for i = 1:nx                %Iteration through length
             nxp = j + (i)*ny;
             nym = j-1 + (i-1)*ny;
             nyp = j+1 + (i-1)*ny;
+
+            rxm = (cMap(i,j) + cMap(i-1,j))/2;
+            rxp = (cMap(i,j) + cMap(i+1,j))/2;
+            rym = (cMap(i,j) + cMap(i,j-1))/2;
+            ryp = (cMap(i,j) + cMap(i,j+1))/2;
             
-            G(n,n) = -(4);
-            G(n,nxm) = 1;
-            G(n,nxp) = 1;
-            G(n,nym) = 1;
-            G(n,nyp) = 1;
+            G(n,n) = -(rxm+rxp+rym+ryp);
+            G(n,nxm) = rxm;
+            G(n,nxp) = rxp;
+            G(n,nym) = rym;
+            G(n,nyp) = ryp;
         end
             
     end
@@ -108,4 +128,7 @@ end
 
 figure(2)
 surf(Vmap)
+pbaspect([1 1 0.5])
+figure(3)
+surf(cMap)
 pbaspect([1 1 0.5])
