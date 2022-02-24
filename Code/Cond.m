@@ -57,10 +57,10 @@ for i = 1:nx                %Iteration through length
         elseif i == nx     % x=1 BCs
             G(n,:) = 0;
             G(n,n) = 1;
-            %F(n) = 0;       %F(n)=0 sets z at final width to 0
+            F(n) = 0;       %F(n)=0 sets z at final width to 0
             
 % COMMENT BELOW FOR 1a
-            F(n) = 1;       %F(n)=1 sets z at final width to 1
+            %F(n) = 1;       %F(n)=1 sets z at final width to 1
             
         elseif j == 1                 % y=0 BCs
             nxm = j + (i-2)*ny;
@@ -126,9 +126,46 @@ for i = 1:nx
     end
 end
 
-figure(2)
-surf(Vmap)
-pbaspect([1 1 0.5])
-figure(3)
-surf(cMap)
-pbaspect([1 1 0.5])
+
+for i = 1:nx
+    for j = 1:ny
+        if i == 1
+            Ex(i, j) = (Vmap(i + 1, j) - Vmap(i, j));
+        elseif i == nx
+            Ex(i, j) = (Vmap(i, j) - Vmap(i - 1, j));
+        else
+            Ex(i, j) = (Vmap(i + 1, j) - Vmap(i - 1, j)) * 0.5;
+        end
+        if j == 1
+            Ey(i, j) = (Vmap(i, j + 1) - Vmap(i, j));
+        elseif j == ny
+            Ey(i, j) = (Vmap(i, j) - Vmap(i, j - 1));
+        else
+            Ey(i, j) = (Vmap(i, j + 1) - Vmap(i, j - 1)) * 0.5;
+        end
+    end
+end
+
+Ex = -Ex;
+Ey = -Ey;
+
+eFlowx = cMap .* Ex;        %Jx
+eFlowy = cMap .* Ey;        %Jy
+
+subplot(2, 2, 1), H = surf(cMap');
+set(H, 'linestyle', 'none');
+view(0, 90)
+subplot(2, 2, 2), H = surf(Vmap');
+set(H, 'linestyle', 'none');
+view(0, 90)
+subplot(2, 2, 3), quiver(Ex', Ey');
+axis([0 nx 0 ny]);
+subplot(2, 2, 4), quiver(eFlowx', eFlowy');
+axis([0 nx 0 ny]);
+
+% figure(2)
+% surf(Vmap)
+% pbaspect([1 1 0.5])
+% figure(3)
+% surf(cMap)
+% pbaspect([1 1 0.5])
