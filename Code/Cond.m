@@ -113,8 +113,8 @@ for i = 1:nx                %Iteration through length
             
     end
 end
-figure(1)
-spy(G)
+% figure(1)
+% spy(G)
 
 V = G\F';
 
@@ -152,20 +152,26 @@ Ey = -Ey;
 eFlowx = cMap .* Ex;        %Jx
 eFlowy = cMap .* Ey;        %Jy
 
+figure(1)
 subplot(2, 2, 1), H = surf(cMap');
 set(H, 'linestyle', 'none');
 view(0, 90)
-subplot(2, 2, 2), H = surf(Vmap');
+subplot(2, 2, 2), H = surf(Vmap);
 set(H, 'linestyle', 'none');
-view(0, 90)
+view(90, 270)
 subplot(2, 2, 3), quiver(Ex', Ey');
 axis([0 nx 0 ny]);
 subplot(2, 2, 4), quiver(eFlowx', eFlowy');
 axis([0 nx 0 ny]);
 
-% figure(2)
-% surf(Vmap)
-% pbaspect([1 1 0.5])
-% figure(3)
-% surf(cMap)
-% pbaspect([1 1 0.5])
+figure(2)
+surf(Vmap)
+pbaspect([1 1 0.5])
+figure(3)
+surf(cMap)
+pbaspect([1 1 0.5])
+
+
+C0 = sum(eFlowx(1, :));
+Cnx = sum(eFlowx(nx, :));
+Curr = (C0 + Cnx) * 0.5;

@@ -14,23 +14,25 @@ L = 90;
 W = 2/3 * L;
 V0 = 1;
 
-nx = L;
-ny = W;
+nx = 100;
+ny = 100;
+
+La = linspace(-L/2,L/2,nx);
+Wa = linspace(0, W, ny);
 
 V = zeros(nx,ny);
+Vs = zeros(nx,ny);
 n = 1;
 f = 0;
 
-
-
-for i=1:nx
-    for j = 1:ny
-        for k=1:10
-            f = f + ((1/n)*(cosh(n*pi*i/nx)/cosh(n*pi*ny/nx))*sin(n*pi*j/nx));
-            n = n+2;
+for n=1:2:120
+    for i=1:nx
+        for j = 1:ny
+            V(i,j) = (4*V0/pi)*((1/n)*(cosh(n*pi*La(i)/(W))/cosh(n*pi*(L/2)/(W)))*sin(n*pi*Wa(j)/(W)));              
         end
-        V(i,j) = f * (4*V0/pi);
     end
+    Vs = Vs + V;
+    surf(Vs)
+    pause(0.01)
 end
 
-surf(V)
