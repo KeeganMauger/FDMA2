@@ -164,3 +164,5 @@ for k = 1:length(fMesh)
 end
 
 plot(fMesh,Curr)
+xlabel('Mesh factor multiplier, where default mesh is 90x60')
+ylabel('Current')
