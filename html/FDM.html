@@ -1,0 +1,245 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Elec 4700 Assignment 2</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-02-25"><meta name="DC.source" content="FDM.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Elec 4700 Assignment 2</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Finite Difference Method for Solving Laplace</a></li><li><a href="#2">Section 1: Electrostatic Potential in a Rectangular Region</a></li><li><a href="#3">Section 1a: <img src="FDM_eq06158117804026305442.png" alt="$V = V_0 @ x = 0$"> and <img src="FDM_eq02269144644666466547.png" alt="$V = 0 @ x = L$"></a></li><li><a href="#4">Results</a></li></ul></div><h2 id="1">Finite Difference Method for Solving Laplace</h2><p>Keegan Mauger 101042551</p><h2 id="2">Section 1: Electrostatic Potential in a Rectangular Region</h2><p>Using Laplace's equation by the finite difference method, an electrostatic potential problem was to be solved. The problem was modelled by an orthogonal resistor network in a region of W by L, choosen to be 90 by 60 for this problem. By using a mesh of resistors, boundary conditions and intrusions became easier to model.</p><p>Using the matrix form GV=F, the electrostatic potential in the rectangular region was solved using <img src="FDM_eq14169726738188065069.png" alt="$del^2*V = 0$">.</p><h2 id="3">Section 1a: <img src="FDM_eq06158117804026305442.png" alt="$V = V_0 @ x = 0$"> and <img src="FDM_eq02269144644666466547.png" alt="$V = 0 @ x = L$"></h2><p>For this problem, the boundary conditions were set such that <img src="FDM_eq07361274414855138421.png" alt="$V = V_0 = 1$"> at the left region boundary, and <img src="FDM_eq07631869244723000279.png" alt="$V = 0$"> at the right region boundary. The y-axis boundary conditions were not set. This case was then solved, with the code and results shown below. Note that the region dimensions are taken to be unitless.</p><pre class="codeinput">clear <span class="string">all</span>;
+close <span class="string">all</span>;
+clc;
+set(0,<span class="string">'DefaultFigureWindowStyle'</span>,<span class="string">'docked'</span>);
+
+<span class="comment">% Solving V=V0 @ x=0 and V=0 @ x=L in region LxW</span>
+<span class="comment">% Implement funtion 'pbaspect' to fix Z aspect ratio</span>
+
+L = 90;
+W = 2/3 * L;
+V0 = 1;
+
+fMesh = 1;                  <span class="comment">% Mesh factor</span>
+nx = fMesh*L;
+ny = fMesh*W;
+G = sparse(nx*ny);
+<span class="comment">%V = sparse(nx,ny);</span>
+F = sparse(1,nx*ny);
+
+La = linspace(0,L,nx);
+Wa = linspace(0,W,ny);
+
+<span class="keyword">for</span> i = 1:nx                <span class="comment">%Iteration through length</span>
+    <span class="keyword">for</span> j = 1:ny            <span class="comment">%Iteration through width</span>
+        n = j + (i-1)*ny;
+
+        <span class="keyword">if</span> i == 1          <span class="comment">% x=0 BCs</span>
+            G(n,:) = 0;
+            G(n,n) = 1;
+            F(n) = 1;
+        <span class="keyword">elseif</span> i == nx     <span class="comment">% x=1 BCs</span>
+            G(n,:) = 0;
+            G(n,n) = 1;
+            F(n) = 0;       <span class="comment">%F(n)=0 sets z at final width to 0</span>
+
+        <span class="keyword">else</span>
+            nxm = j + (i-2)*ny;
+            nxp = j + (i)*ny;
+            nym = j-1 + (i-1)*ny;
+            nyp = j+1 + (i-1)*ny;
+
+            G(n,n) = -(4);
+            G(n,nxm) = 1;
+            G(n,nxp) = 1;
+            G(n,nym) = 1;
+            G(n,nyp) = 1;
+        <span class="keyword">end</span>
+
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="comment">% figure(1)</span>
+<span class="comment">% spy(G)</span>
+
+V = G\F';
+
+Vmap = zeros(nx,ny);
+<span class="keyword">for</span> i = 1:nx
+    <span class="keyword">for</span> j = 1:ny
+        n = j + (i-1)*ny;
+        Vmap(i,j) = V(n);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+figure(1)
+surf(Vmap)
+pbaspect([1 1 0.5])
+view(90,270)
+title(<span class="string">'2D plot of Electrostatic Potential over a Rectangular Region'</span>)
+xlabel(<span class="string">'Region Width'</span>)    <span class="comment">%Axis swapped due to view change, named correctly</span>
+ylabel(<span class="string">'Region Length'</span>)
+zlabel(<span class="string">'Voltage (V)'</span>)
+saveas(gcf,<span class="string">'Figure1'</span>)
+</pre><h2 id="4">Results</h2><p>On the plot, the colourmap represents the voltage of the region. As expected, the voltage begins in the region at 1V and linearly decreses over the length to zero volts.</p><img vspace="5" hspace="5" src="FDM_01.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Elec 4700 Assignment 2
+%%% Finite Difference Method for Solving Laplace
+% Keegan Mauger
+% 101042551
+
+%% Section 1: Electrostatic Potential in a Rectangular Region
+%
+% Using Laplace's equation by the finite difference method, an
+% electrostatic potential problem was to be solved. The problem was
+% modelled by an orthogonal resistor network in a region of W by L, choosen
+% to be 90 by 60 for this problem. By using a mesh of resistors, boundary
+% conditions and intrusions became easier to model.
+%
+% Using the matrix form GV=F, the electrostatic potential in the
+% rectangular region was solved using $del^2*V = 0$. 
+%
+%%% Section 1a: $V = V_0 @ x = 0$ and $V = 0 @ x = L$
+% For this problem, the boundary conditions were set such that $V = V_0 = 1$
+% at the left region boundary, and $V = 0$ at the right region boundary.
+% The y-axis boundary conditions were not set. This case was then solved,
+% with the code and results shown below. Note that the region dimensions
+% are taken to be unitless.
+
+clear all;
+close all;
+clc;
+set(0,'DefaultFigureWindowStyle','docked');
+
+% Solving V=V0 @ x=0 and V=0 @ x=L in region LxW
+% Implement funtion 'pbaspect' to fix Z aspect ratio
+
+L = 90;
+W = 2/3 * L;
+V0 = 1;
+
+fMesh = 1;                  % Mesh factor
+nx = fMesh*L;
+ny = fMesh*W;
+G = sparse(nx*ny);
+%V = sparse(nx,ny);
+F = sparse(1,nx*ny);
+
+La = linspace(0,L,nx);
+Wa = linspace(0,W,ny);
+
+for i = 1:nx                %Iteration through length
+    for j = 1:ny            %Iteration through width
+        n = j + (i-1)*ny;
+
+        if i == 1          % x=0 BCs
+            G(n,:) = 0;
+            G(n,n) = 1;
+            F(n) = 1;
+        elseif i == nx     % x=1 BCs
+            G(n,:) = 0;
+            G(n,n) = 1;
+            F(n) = 0;       %F(n)=0 sets z at final width to 0
+              
+        else
+            nxm = j + (i-2)*ny;
+            nxp = j + (i)*ny;
+            nym = j-1 + (i-1)*ny;
+            nyp = j+1 + (i-1)*ny;
+            
+            G(n,n) = -(4);
+            G(n,nxm) = 1;
+            G(n,nxp) = 1;
+            G(n,nym) = 1;
+            G(n,nyp) = 1;
+        end
+            
+    end
+end
+% figure(1)
+% spy(G)
+
+V = G\F';
+
+Vmap = zeros(nx,ny);
+for i = 1:nx
+    for j = 1:ny
+        n = j + (i-1)*ny;
+        Vmap(i,j) = V(n);
+    end
+end
+
+figure(1)
+surf(Vmap)
+pbaspect([1 1 0.5])
+view(90,270)
+title('2D plot of Electrostatic Potential over a Rectangular Region')
+xlabel('Region Width')    %Axis swapped due to view change, named correctly
+ylabel('Region Length')
+zlabel('Voltage (V)')
+saveas(gcf,'Figure1')
+
+%%% Results
+% On the plot, the colourmap represents the voltage of the region. As
+% expected, the voltage begins in the region at 1V and linearly decreses
+% over the length to zero volts.
+##### SOURCE END #####
+--></body></html>

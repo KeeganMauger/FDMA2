@@ -14,7 +14,7 @@
 % Using the matrix form GV=F, the electrostatic potential in the
 % rectangular region was solved using $del^2*V = 0$. 
 %
-%%% Section 1a: $V = V_0 @ x = 0$ and $V = 0 @ x = L$
+%%% Section 1a: $V = V_0 @ x = 0$ and %V = 0 @ x = L$
 % For this problem, the boundary conditions were set such that $V = V_0 = 1$
 % at the left region boundary, and $V = 0$ at the right region boundary.
 % The y-axis boundary conditions were not set. This case was then solved,
@@ -94,7 +94,5 @@ ylabel('Region Length')
 zlabel('Voltage (V)')
 saveas(gcf,'Figure1')
 
-%%% Results
 % On the plot, the colourmap represents the voltage of the region. As
 % expected, the voltage begins in the region at 1V and linearly decreses
-% over the length to zero volts.

@@ -14,7 +14,7 @@ L = 90;
 W = 2/3 * L;
 V0 = 1;
 
-fMesh = 0.05:0.05:2;
+fMesh = 0.5:0.5:3;
 for k = 1:length(fMesh)
     
     nx = round(fMesh(k)*L);
