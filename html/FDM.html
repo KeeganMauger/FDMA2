@@ -70,7 +70,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
   </style></head><body><div class="content"><h1>Elec 4700 Assignment 2</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Finite Difference Method for Solving Laplace</a></li><li><a href="#2">Section 1: Electrostatic Potential in a Rectangular Region</a></li><li><a href="#3">Section 1a: <img src="FDM_eq06158117804026305442.png" alt="$V = V_0 @ x = 0$"> and <img src="FDM_eq02269144644666466547.png" alt="$V = 0 @ x = L$"></a></li><li><a href="#4">Results</a></li></ul></div><h2 id="1">Finite Difference Method for Solving Laplace</h2><p>Keegan Mauger 101042551</p><h2 id="2">Section 1: Electrostatic Potential in a Rectangular Region</h2><p>Using Laplace's equation by the finite difference method, an electrostatic potential problem was to be solved. The problem was modelled by an orthogonal resistor network in a region of W by L, choosen to be 90 by 60 for this problem. By using a mesh of resistors, boundary conditions and intrusions became easier to model.</p><p>Using the matrix form GV=F, the electrostatic potential in the rectangular region was solved using <img src="FDM_eq14169726738188065069.png" alt="$del^2*V = 0$">.</p><h2 id="3">Section 1a: <img src="FDM_eq06158117804026305442.png" alt="$V = V_0 @ x = 0$"> and <img src="FDM_eq02269144644666466547.png" alt="$V = 0 @ x = L$"></h2><p>For this problem, the boundary conditions were set such that <img src="FDM_eq07361274414855138421.png" alt="$V = V_0 = 1$"> at the left region boundary, and <img src="FDM_eq07631869244723000279.png" alt="$V = 0$"> at the right region boundary. The y-axis boundary conditions were not set. This case was then solved, with the code and results shown below. Note that the region dimensions are taken to be unitless.</p><pre class="codeinput">clear <span class="string">all</span>;
 close <span class="string">all</span>;
 clc;
-set(0,<span class="string">'DefaultFigureWindowStyle'</span>,<span class="string">'docked'</span>);
+<span class="comment">%set(0,'DefaultFigureWindowStyle','docked');</span>
 
 <span class="comment">% Solving V=V0 @ x=0 and V=0 @ x=L in region LxW</span>
 <span class="comment">% Implement funtion 'pbaspect' to fix Z aspect ratio</span>
@@ -139,6 +139,7 @@ xlabel(<span class="string">'Region Width'</span>)    <span class="comment">%Axi
 ylabel(<span class="string">'Region Length'</span>)
 zlabel(<span class="string">'Voltage (V)'</span>)
 saveas(gcf,<span class="string">'Figure1'</span>)
+snapnow
 </pre><h2 id="4">Results</h2><p>On the plot, the colourmap represents the voltage of the region. As expected, the voltage begins in the region at 1V and linearly decreses over the length to zero volts.</p><img vspace="5" hspace="5" src="FDM_01.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Elec 4700 Assignment 2
@@ -167,7 +168,7 @@ saveas(gcf,<span class="string">'Figure1'</span>)
 clear all;
 close all;
 clc;
-set(0,'DefaultFigureWindowStyle','docked');
+%set(0,'DefaultFigureWindowStyle','docked');
 
 % Solving V=V0 @ x=0 and V=0 @ x=L in region LxW
 % Implement funtion 'pbaspect' to fix Z aspect ratio
@@ -236,6 +237,7 @@ xlabel('Region Width')    %Axis swapped due to view change, named correctly
 ylabel('Region Length')
 zlabel('Voltage (V)')
 saveas(gcf,'Figure1')
+snapnow
 
 %%% Results
 % On the plot, the colourmap represents the voltage of the region. As

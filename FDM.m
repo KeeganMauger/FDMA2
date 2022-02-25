@@ -24,7 +24,7 @@
 clear all;
 close all;
 clc;
-set(0,'DefaultFigureWindowStyle','docked');
+%set(0,'DefaultFigureWindowStyle','docked');
 
 % Solving V=V0 @ x=0 and V=0 @ x=L in region LxW
 % Implement funtion 'pbaspect' to fix Z aspect ratio
