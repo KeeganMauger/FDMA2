@@ -14,9 +14,9 @@ L = 90;
 W = 2/3 * L;
 V0 = 1;
 
-fMesh = 1;                  % Mesh factor
-nx = fMesh*L;
-ny = fMesh*W;
+fMesh = 0.05;                  % Mesh factor
+nx = round(fMesh*L);
+ny = round(fMesh*W);
 G = sparse(nx*ny);
 %V = sparse(nx,ny);
 F = sparse(1,nx*ny);
@@ -71,8 +71,8 @@ for i = 1:nx                %Iteration through length
             
     end
 end
-figure(1)
-spy(G)
+% figure(1)
+% spy(G)
 
 V = G\F';
 
@@ -84,8 +84,8 @@ for i = 1:nx
     end
 end
 
-figure(2)
-surf(Vmap)
+figure(1)
+surf(La,Wa,Vmap')
 pbaspect([1 1 0.5])
 
 
