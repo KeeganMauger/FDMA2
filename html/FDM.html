@@ -6,8 +6,8 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Elec 4700 Assignment 2</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-02-25"><meta name="DC.source" content="FDM.m"><style type="text/css">
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+      --><title>Elec 4700 Assignment 2</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-02-25"><meta name="DC.source" content="FDM.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
 html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
@@ -23,7 +23,7 @@ a:visited { color:#004aa0; text-decoration:none; }
 
 p { padding:0px; margin:0px 0px 20px; }
 img { padding:0px; margin:0px 0px 20px; border:none; }
-p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
 
 ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
 ul li { padding:0px; margin:0px 0px 7px 0px; }
@@ -52,7 +52,6 @@ span.comment { color:#228B22 }
 span.string { color:#A020F0 }
 span.untermstring { color:#B20000 }
 span.syscmd { color:#B28C00 }
-span.typesection { color:#A0522D }
 
 .footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
 .footer p { margin:0px; }
@@ -67,9 +66,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Elec 4700 Assignment 2</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Finite Difference Method for Solving Laplace</a></li><li><a href="#2">Section 1: Electrostatic Potential in a Rectangular Region</a></li><li><a href="#3">Section 1a: <img src="FDM_eq06158117804026305442.png" alt="$V = V_0 @ x = 0$"> and <img src="FDM_eq02269144644666466547.png" alt="$V = 0 @ x = L$"></a></li><li><a href="#4">Results</a></li></ul></div><h2 id="1">Finite Difference Method for Solving Laplace</h2><p>Keegan Mauger 101042551</p><h2 id="2">Section 1: Electrostatic Potential in a Rectangular Region</h2><p>Using Laplace's equation by the finite difference method, an electrostatic potential problem was to be solved. The problem was modelled by an orthogonal resistor network in a region of W by L, choosen to be 90 by 60 for this problem. By using a mesh of resistors, boundary conditions and intrusions became easier to model.</p><p>Using the matrix form GV=F, the electrostatic potential in the rectangular region was solved using <img src="FDM_eq14169726738188065069.png" alt="$del^2*V = 0$">.</p><h2 id="3">Section 1a: <img src="FDM_eq06158117804026305442.png" alt="$V = V_0 @ x = 0$"> and <img src="FDM_eq02269144644666466547.png" alt="$V = 0 @ x = L$"></h2><p>For this problem, the boundary conditions were set such that <img src="FDM_eq07361274414855138421.png" alt="$V = V_0 = 1$"> at the left region boundary, and <img src="FDM_eq07631869244723000279.png" alt="$V = 0$"> at the right region boundary. The y-axis boundary conditions were not set. This case was then solved, with the code and results shown below. Note that the region dimensions are taken to be unitless.</p><pre class="codeinput">clear <span class="string">all</span>;
-close <span class="string">all</span>;
-clc;
+  </style></head><body><div class="content"><h1>Elec 4700 Assignment 2</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Finite Difference Method for Solving Laplace</a></li><li><a href="#2">Section 1: Electrostatic Potential in a Rectangular Region</a></li><li><a href="#3">Section 1a: <img src="FDM_eq11319541771117433109.png" alt="$V = V_0 @ x = 0$"> and <img src="FDM_eq12634582405860773101.png" alt="$V = 0 @ x = L$"></a></li><li><a href="#4">Results</a></li><li><a href="#5">Section 1b: <img src="FDM_eq00721499726302547484.png" alt="$V = V_0 @ x = 0,L$"> and <img src="FDM_eq03918875208704143140.png" alt="$V = 0 @ y = 0,W$"></a></li><li><a href="#6">Discussion</a></li><li><a href="#7">Discussion</a></li><li><a href="#8">Section 2: Current Flow in Inhomogeneous Solids</a></li></ul></div><h2 id="1">Finite Difference Method for Solving Laplace</h2><p>Keegan Mauger 101042551</p><h2 id="2">Section 1: Electrostatic Potential in a Rectangular Region</h2><p>Using Laplace's equation by the finite difference method, an electrostatic potential problem was to be solved. The problem was modelled by an orthogonal resistor network in a region of W by L, choosen to be 90 by 60 for this problem. By using a mesh of resistors, boundary conditions and intrusions became easier to model.</p><p>Using the matrix form GV=F, the electrostatic potential in the rectangular region was solved using <img src="FDM_eq09425118400198292601.png" alt="$del^2*V = 0$">.</p><h2 id="3">Section 1a: <img src="FDM_eq11319541771117433109.png" alt="$V = V_0 @ x = 0$"> and <img src="FDM_eq12634582405860773101.png" alt="$V = 0 @ x = L$"></h2><p>For this problem, the boundary conditions were set such that <img src="FDM_eq00540528193783360420.png" alt="$V = V_0 = 1$"> at the left region boundary, and <img src="FDM_eq02021602327874603129.png" alt="$V = 0$"> at the right region boundary. The y-axis boundary conditions were not set. This case was then solved, with the code and results shown below. Note that the region dimensions are taken to be unitless.</p><pre class="codeinput">clear <span class="string">all</span>
+close <span class="string">all</span>
+clc
 set(0,<span class="string">'DefaultFigureWindowStyle'</span>,<span class="string">'docked'</span>);
 
 <span class="comment">% Solving V=V0 @ x=0 and V=0 @ x=L in region LxW</span>
@@ -139,7 +138,134 @@ xlabel(<span class="string">'Region Width'</span>)    <span class="comment">%Axi
 ylabel(<span class="string">'Region Length'</span>)
 zlabel(<span class="string">'Voltage (V)'</span>)
 saveas(gcf,<span class="string">'Figure1'</span>)
-</pre><h2 id="4">Results</h2><p>On the plot, the colourmap represents the voltage of the region. As expected, the voltage begins in the region at 1V and linearly decreses over the length to zero volts.</p><img vspace="5" hspace="5" src="FDM_01.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+</pre><h2 id="4">Results</h2><p>On the plot, the colourmap represents the voltage of the region. As expected, the voltage begins in the region at 1V and linearly decreses over the length to zero volts.</p><img vspace="5" hspace="5" src="FDM_01.png" alt=""> <h2 id="5">Section 1b: <img src="FDM_eq00721499726302547484.png" alt="$V = V_0 @ x = 0,L$"> and <img src="FDM_eq03918875208704143140.png" alt="$V = 0 @ y = 0,W$"></h2><p>The problem was solved using both numerical and analytical approaches. First, the problem was solved using the numerical method, shown below.</p><pre class="codeinput">clear <span class="string">all</span>
+
+clc
+
+<span class="comment">% Solving V=V0 @ x=0 and V=V0 @ x=L in region LxW</span>
+<span class="comment">% Implement funtion 'pbaspect' to fix Z aspect ratio</span>
+
+L = 90;
+W = 2/3 * L;
+V0 = 1;
+
+fMesh = 1;                  <span class="comment">% Mesh factor</span>
+nx = fMesh*L;
+ny = fMesh*W;
+G = sparse(nx*ny);
+<span class="comment">%V = sparse(nx,ny);</span>
+F = sparse(1,nx*ny);
+
+La = linspace(0,L,nx);
+Wa = linspace(0,W,ny);
+
+<span class="keyword">for</span> i = 1:nx                <span class="comment">%Iteration through length</span>
+    <span class="keyword">for</span> j = 1:ny            <span class="comment">%Iteration through width</span>
+        n = j + (i-1)*ny;
+
+        <span class="keyword">if</span> i == 1          <span class="comment">% x=0 BCs</span>
+            G(n,:) = 0;
+            G(n,n) = 1;
+            F(n) = 1;
+        <span class="keyword">elseif</span> i == nx     <span class="comment">% x=1 BCs</span>
+            G(n,:) = 0;
+            G(n,n) = 1;
+            <span class="comment">%F(n) = 0;       %F(n)=0 sets z at final width to 0</span>
+
+<span class="comment">% COMMENT BELOW FOR 1a</span>
+            F(n) = 1;       <span class="comment">%F(n)=1 sets z at final width to 1</span>
+
+        <span class="keyword">elseif</span> j == 1                 <span class="comment">% y=0 BCs</span>
+            nxm = j + (i-2)*ny;
+            nxp = j + (i)*ny;
+            nyp = j+1 + (i-1)*ny;
+
+            G(n,n) = 1;
+        <span class="keyword">elseif</span> j == ny                <span class="comment">% y=1 BCs</span>
+            nxm = j + (i-2)*ny;
+            nxp = j + (i)*ny;
+            nym = j-1 + (i-1)*ny;
+
+            G(n,n) = 1;
+
+
+<span class="comment">% COMMENT ABOVE FOR 1a</span>
+
+        <span class="keyword">else</span>
+            nxm = j + (i-2)*ny;
+            nxp = j + (i)*ny;
+            nym = j-1 + (i-1)*ny;
+            nyp = j+1 + (i-1)*ny;
+
+            G(n,n) = -(4);
+            G(n,nxm) = 1;
+            G(n,nxp) = 1;
+            G(n,nym) = 1;
+            G(n,nyp) = 1;
+        <span class="keyword">end</span>
+
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+V = G\F';
+
+Vmap = zeros(nx,ny);
+<span class="keyword">for</span> i = 1:nx
+    <span class="keyword">for</span> j = 1:ny
+        n = j + (i-1)*ny;
+        Vmap(i,j) = V(n);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+figure(2)
+surf(Vmap)
+pbaspect([1 1 0.5])
+title(<span class="string">'3D Surface plot of Electrostatic Potential, Numerical Solution'</span>)
+xlabel(<span class="string">'Region Width'</span>)
+ylabel(<span class="string">'Region Length'</span>)
+zlabel(<span class="string">'Voltage (V)'</span>)
+saveas(gcf,<span class="string">'Figure2'</span>)
+</pre><img vspace="5" hspace="5" src="FDM_02.png" alt=""> <h2 id="6">Discussion</h2><p>The results above are for a region with a mesh size equal to the length and width, meaning that each increase by 1 in the position axis corresponds to 1 calculation. Increasing or decreasing the mesh size results in a different resolution of equations, which in turn results in a different solution, as discussed below.</p><p>Next, the problem was again solved, using an analytical approach. The analytical solution results and discussion are displayed below.</p><pre class="codeinput">clear <span class="string">all</span>
+clc
+
+<span class="comment">% Solving V=V0 @ x=0 and V=0 @ x=L in region LxW</span>
+<span class="comment">% Implement funtion 'pbaspect' to fix Z aspect ratio</span>
+
+L = 90;
+W = 2/3 * L;
+V0 = 1;
+
+nx = 100;
+ny = 100;
+
+La = linspace(-L/2,L/2,nx);
+Wa = linspace(0, W, ny);
+
+V = zeros(nx,ny);
+Vs = zeros(nx,ny);
+n = 1;
+f = 0;
+figure(3)
+
+<span class="keyword">for</span> n=1:2:210
+    <span class="keyword">for</span> i=1:nx
+        <span class="keyword">for</span> j = 1:ny
+            V(i,j) = (4*V0/pi)*<span class="keyword">...</span>
+            ((1/n)*(cosh(n*pi*La(i)/(W))/cosh(n*pi*(L/2)/(W)))*<span class="keyword">...</span>
+            sin(n*pi*Wa(j)/(W)));
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    Vs = Vs + V;
+    surf(La,Wa,Vs)
+    pbaspect([1 1 0.5])
+    pause(0.01)
+<span class="keyword">end</span>
+title(<span class="string">'3D Surface plot of Electrostatic Potential, Analytical Solution'</span>)
+xlabel(<span class="string">'Region Length'</span>)
+ylabel(<span class="string">'Region Width'</span>)
+zlabel(<span class="string">'Voltage (V)'</span>)
+saveas(gcf,<span class="string">'Figure3'</span>)
+</pre><h2 id="7">Discussion</h2><p>Seen in the analytical plot, the results are similar, but differences do occur at the boundary conditions where the analytical solution produces a "wavy" peak. This similarity is due to the numerical solution having a suffcicent resolution. The optimal point to stop the analytical solution would be based on the difference in errors of the current iteration and the previous iteration, where the error becomes smaller with each successive iteration of the formula. This can then be compared to a user defined accuracy, where when the analytical error becomes smaller than the user defined value, the solution would stop.</p><p>As shown in "test.m" provided with this report, if the resolution is decreased the solution becomes increasing distorted, and likely becomes irrelevant. A higher resolution, appropriately, results in a better solution, however a balance occurs between processing time of larger resolutions and increasingly small differences in solution quality.</p><img vspace="5" hspace="5" src="FDM_03.png" alt=""> <img vspace="5" hspace="5" src="FDM_04.png" alt=""> <img vspace="5" hspace="5" src="FDM_05.png" alt=""> <h2 id="8">Section 2: Current Flow in Inhomogeneous Solids</h2><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Elec 4700 Assignment 2
 %%% Finite Difference Method for Solving Laplace
@@ -157,16 +283,16 @@ saveas(gcf,<span class="string">'Figure1'</span>)
 % Using the matrix form GV=F, the electrostatic potential in the
 % rectangular region was solved using $del^2*V = 0$. 
 %
-%%% Section 1a: $V = V_0 @ x = 0$ and $V = 0 @ x = L$
+%% Section 1a: $V = V_0 @ x = 0$ and $V = 0 @ x = L$
 % For this problem, the boundary conditions were set such that $V = V_0 = 1$
 % at the left region boundary, and $V = 0$ at the right region boundary.
 % The y-axis boundary conditions were not set. This case was then solved,
 % with the code and results shown below. Note that the region dimensions
 % are taken to be unitless.
 
-clear all;
-close all;
-clc;
+clear all
+close all
+clc
 set(0,'DefaultFigureWindowStyle','docked');
 
 % Solving V=V0 @ x=0 and V=0 @ x=L in region LxW
@@ -241,5 +367,169 @@ saveas(gcf,'Figure1')
 % On the plot, the colourmap represents the voltage of the region. As
 % expected, the voltage begins in the region at 1V and linearly decreses
 % over the length to zero volts.
+%
+%% Section 1b: $V = V_0 @ x = 0,L$ and $V = 0 @ y = 0,W$
+% The problem was solved using both numerical and analytical approaches.
+% First, the problem was solved using the numerical method, shown below.
+
+clear all
+
+clc
+
+% Solving V=V0 @ x=0 and V=V0 @ x=L in region LxW
+% Implement funtion 'pbaspect' to fix Z aspect ratio
+
+L = 90;
+W = 2/3 * L;
+V0 = 1;
+
+fMesh = 1;                  % Mesh factor
+nx = fMesh*L;
+ny = fMesh*W;
+G = sparse(nx*ny);
+%V = sparse(nx,ny);
+F = sparse(1,nx*ny);
+
+La = linspace(0,L,nx);
+Wa = linspace(0,W,ny);
+
+for i = 1:nx                %Iteration through length
+    for j = 1:ny            %Iteration through width
+        n = j + (i-1)*ny;
+
+        if i == 1          % x=0 BCs
+            G(n,:) = 0;
+            G(n,n) = 1;
+            F(n) = 1;
+        elseif i == nx     % x=1 BCs
+            G(n,:) = 0;
+            G(n,n) = 1;
+            %F(n) = 0;       %F(n)=0 sets z at final width to 0
+            
+% COMMENT BELOW FOR 1a
+            F(n) = 1;       %F(n)=1 sets z at final width to 1
+            
+        elseif j == 1                 % y=0 BCs
+            nxm = j + (i-2)*ny;
+            nxp = j + (i)*ny;
+            nyp = j+1 + (i-1)*ny;
+            
+            G(n,n) = 1;
+        elseif j == ny                % y=1 BCs
+            nxm = j + (i-2)*ny;
+            nxp = j + (i)*ny;
+            nym = j-1 + (i-1)*ny;
+            
+            G(n,n) = 1;
+            
+            
+% COMMENT ABOVE FOR 1a
+            
+        else
+            nxm = j + (i-2)*ny;
+            nxp = j + (i)*ny;
+            nym = j-1 + (i-1)*ny;
+            nyp = j+1 + (i-1)*ny;
+            
+            G(n,n) = -(4);
+            G(n,nxm) = 1;
+            G(n,nxp) = 1;
+            G(n,nym) = 1;
+            G(n,nyp) = 1;
+        end
+            
+    end
+end
+
+V = G\F';
+
+Vmap = zeros(nx,ny);
+for i = 1:nx
+    for j = 1:ny
+        n = j + (i-1)*ny;
+        Vmap(i,j) = V(n);
+    end
+end
+
+figure(2)
+surf(Vmap)
+pbaspect([1 1 0.5])
+title('3D Surface plot of Electrostatic Potential, Numerical Solution')
+xlabel('Region Width')
+ylabel('Region Length')
+zlabel('Voltage (V)')
+saveas(gcf,'Figure2')
+
+%% Discussion
+% The results above are for a region with a mesh size equal to the length
+% and width, meaning that each increase by 1 in the position axis
+% corresponds to 1 calculation. Increasing or decreasing the mesh size
+% results in a different resolution of equations, which in turn results in
+% a different solution, as discussed below.
+%
+% Next, the problem was again solved, using an analytical approach. The
+% analytical solution results and discussion are displayed below.
+
+clear all
+clc
+
+% Solving V=V0 @ x=0 and V=0 @ x=L in region LxW
+% Implement funtion 'pbaspect' to fix Z aspect ratio
+
+L = 90;
+W = 2/3 * L;
+V0 = 1;
+
+nx = 100;
+ny = 100;
+
+La = linspace(-L/2,L/2,nx);
+Wa = linspace(0, W, ny);
+
+V = zeros(nx,ny);
+Vs = zeros(nx,ny);
+n = 1;
+f = 0;
+figure(3)
+
+for n=1:2:210
+    for i=1:nx
+        for j = 1:ny
+            V(i,j) = (4*V0/pi)*...
+            ((1/n)*(cosh(n*pi*La(i)/(W))/cosh(n*pi*(L/2)/(W)))*...
+            sin(n*pi*Wa(j)/(W)));              
+        end
+    end
+    Vs = Vs + V;
+    surf(La,Wa,Vs)
+    pbaspect([1 1 0.5])
+    pause(0.01)
+end
+title('3D Surface plot of Electrostatic Potential, Analytical Solution')
+xlabel('Region Length')
+ylabel('Region Width')
+zlabel('Voltage (V)')
+saveas(gcf,'Figure3')
+
+%%% Discussion
+% Seen in the analytical plot, the results are similar, but differences do
+% occur at the boundary conditions where the analytical solution produces a
+% "wavy" peak. This similarity is due to the numerical solution having a 
+% suffcicent resolution. The optimal point to stop the analytical solution
+% would be based on the difference in errors of the current iteration and 
+% the previous iteration, where the error becomes smaller with each
+% successive iteration of the formula. This can then be compared to a user
+% defined accuracy, where when the analytical error becomes smaller than
+% the user defined value, the solution would stop.
+%
+% As shown in "test.m" provided with this report, if the resolution is
+% decreased the solution becomes increasing distorted, and likely becomes
+% irrelevant. A higher resolution, appropriately, results in a better
+% solution, however a balance occurs between processing time of larger
+% resolutions and increasingly small differences in solution quality.
+
+%% Section 2: Current Flow in Inhomogeneous Solids
+%
+
 ##### SOURCE END #####
 --></body></html>
