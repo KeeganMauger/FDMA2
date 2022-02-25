@@ -14,19 +14,19 @@ L = 90;
 W = 2/3 * L;
 V0 = 1;
 
-fMesh = 1;                  % Mesh factor
-nx = fMesh*L;
-ny = fMesh*W;
-G = sparse(nx*ny);
+%fMesh = 1;                  % Mesh factor
+nx = 100;
+ny = 100;
+G = sparse(L*W);
 %V = sparse(nx,ny);
-F = sparse(1,nx*ny);
+F = sparse(1,L*W);
 
 La = linspace(0,L,nx);
 Wa = linspace(0,W,ny);
 
 for i = 1:nx                %Iteration through length
     for j = 1:ny            %Iteration through width
-        n = j + (i-1)*ny;
+        n = j + (i-1)*W;
 
         if i == 1          % x=0 BCs
             G(n,:) = 0;
@@ -41,15 +41,15 @@ for i = 1:nx                %Iteration through length
             F(n) = 1;       %F(n)=1 sets z at final width to 1
             
         elseif j == 1                 % y=0 BCs
-            nxm = j + (i-2)*ny;
-            nxp = j + (i)*ny;
-            nyp = j+1 + (i-1)*ny;
+            nxm = j + (i-2)*W;
+            nxp = j + (i)*W;
+            nyp = j+1 + (i-1)*W;
             
             G(n,n) = 1;
         elseif j == ny                % y=1 BCs
-            nxm = j + (i-2)*ny;
-            nxp = j + (i)*ny;
-            nym = j-1 + (i-1)*ny;
+            nxm = j + (i-2)*W;
+            nxp = j + (i)*W;
+            nym = j-1 + (i-1)*W;
             
             G(n,n) = 1;
             
@@ -57,9 +57,9 @@ for i = 1:nx                %Iteration through length
 % COMMENT ABOVE FOR 1a
             
         else
-            nxm = j + (i-2)*ny;
-            nxp = j + (i)*ny;
-            nym = j-1 + (i-1)*ny;
+            nxm = j + (i-2)*W;
+            nxp = j + (i)*W;
+            nym = j-1 + (i-1)*W;
             nyp = j+1 + (i-1)*ny;
             
             G(n,n) = -(4);
@@ -90,21 +90,3 @@ pbaspect([1 1 0.5])
 
 
 % Analytical series solution
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

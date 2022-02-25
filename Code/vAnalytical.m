@@ -33,6 +33,7 @@ for n=1:2:210
     end
     Vs = Vs + V;
     surf(Vs)
+    pbaspect([1 1 0.5])
     pause(0.01)
 end
 

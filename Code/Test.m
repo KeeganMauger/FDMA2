@@ -90,21 +90,3 @@ pbaspect([1 1 0.5])
 
 
 % Analytical series solution
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
