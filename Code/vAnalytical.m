@@ -25,7 +25,7 @@ Vs = zeros(nx,ny);
 n = 1;
 f = 0;
 
-for n=1:2:120
+for n=1:2:210
     for i=1:nx
         for j = 1:ny
             V(i,j) = (4*V0/pi)*((1/n)*(cosh(n*pi*La(i)/(W))/cosh(n*pi*(L/2)/(W)))*sin(n*pi*Wa(j)/(W)));              
