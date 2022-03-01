@@ -14,6 +14,13 @@
 % Using the matrix form GV=F, the electrostatic potential in the
 % rectangular region was solved using $del^2*V = 0$. 
 %
+% Note that, for unknown reasons, the publishing tool does not function as
+% intended with MATLAB 2021b. I ran this code using MATLAB 2020a, and
+% after discussion with Aaron, decided that this was the best method to
+% publish the report. In 2020a, the publisher attaches the figures to the
+% end of the current section, so in order to achieve the desired results, I
+% was forced to break text into sections to 
+%
 %% Section 1a: $V = V_0 @ x = 0$ and $V = 0 @ x = L$
 % For this problem, the boundary conditions were set such that $V = V_0 = 1$
 % at the left region boundary, and $V = 0$ at the right region boundary.
@@ -232,7 +239,7 @@ for n=1:2:210
         end
     end
     Vs = Vs + V;
-    surf(La,Wa,Vs)
+    surf(Wa,La,Vs)
     pbaspect([1 1 0.5])
     pause(0.01)
 end
@@ -260,7 +267,15 @@ saveas(gcf,'Figure3')
 % resolutions and increasingly small differences in solution quality.
 %
 % A major difference between analytical and numerical methods is in
-% computer resourses. The analytical solution, due to being a sum, can it
+% computer resourses. The analytical solution, due to being a sum of a 
+% potentially complex function, can iterate to a large degree which results
+% in increased computation time. Comparitively, the analytical approach, 
+% making use of sparse martricies, is a more efficient use of resources and
+% time.
+%
+% Additionally, a numerical method can find a solution to a problem for
+% which no analytical solution exists, while an analytical method is exact
+% and thus may have a smaller degree of error.
 
 %% Section 2a: Current Flow in Inhomogeneous Solids
 % In section 2, the finite difference method was used to calculate the
@@ -629,7 +644,7 @@ figure(5)
 plot(fMesh,Curr)
 xlabel('Mesh factor multiplier, where default mesh is 90x60')
 ylabel('Current (A)')
-title('Current Versus Mesh Size')
+title('Current vs Mesh Size')
 saveas(gcf,'Figure5')
 
 %% Section 2c: Current vs Bottleneck Size
@@ -801,7 +816,7 @@ figure(6)
 plot(BN,Curr)
 xlabel('Dimension Factor Added to Box Width')
 ylabel('Current (A)')
-title('Current vs varying Bottlenecks')
+title('Current vs Varying Bottlenecks')
 saveas(gcf,'Figure6')
 
 %% Section 2d: Current vs Conductivity

@@ -14,6 +14,15 @@
 % Using the matrix form GV=F, the electrostatic potential in the
 % rectangular region was solved using $del^2*V = 0$. 
 %
+% Note that, for unknown reasons, the publishing tool does not function as
+% intended with MATLAB 2021b. I ran this code using MATLAB 2020a, and
+% after discussion with Aaron, decided that this was the best method to
+% publish the report. In 2020a, the publisher attaches the figures to the
+% end of the current section, so in order to achieve the desired results, I
+% was forced to break text into sections to compensate for this problem.
+% This had the unfortunate side effect of making the formatting worse than
+% I would have intended.
+%
 %% Section 1a: $V = V_0 @ x = 0$ and $V = 0 @ x = L$
 % For this problem, the boundary conditions were set such that $V = V_0 = 1$
 % at the left region boundary, and $V = 0$ at the right region boundary.
@@ -232,13 +241,13 @@ for n=1:2:210
         end
     end
     Vs = Vs + V;
-    surf(La,Wa,Vs)
+    surf(Wa,La,Vs)
     pbaspect([1 1 0.5])
     pause(0.01)
 end
 title('3D Surface plot of Electrostatic Potential, Analytical Solution')
-xlabel('Region Length')
-ylabel('Region Width')
+xlabel('Region Width')
+ylabel('Region Length')
 zlabel('Voltage (V)')
 saveas(gcf,'Figure3')
 
