@@ -656,6 +656,9 @@ saveas(gcf,'Figure5')
 % boxes are 20 units in width, what was plotted for BN is the additional
 % width added to the original dimensions. From the results, it was seen
 % that current is reduced with a narrower bottleneck.
+%
+% For example, with a BN of 1: the Wb of each box is increased by 1. So for
+% every increase of BN, the gap between boxes is decresed by $2*BN$.
 
 clear all
 clc
