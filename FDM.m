@@ -658,7 +658,7 @@ saveas(gcf,'Figure5')
 % that current is reduced with a narrower bottleneck.
 %
 % For example, with a BN of 1: the Wb of each box is increased by 1. So for
-% every increase of BN, the gap between boxes is decresed by $2*BN$.
+% every increase of BN, the gap between boxes is decreased by $2*BN$.
 
 clear all
 clc
@@ -986,7 +986,7 @@ end
 
 figure(7)
 plot(Bcond,Curr)
-xlabel('Conductivity of Inclusion Regions')
+xlabel('Conductivity of Inclusion Regions (Seimens)')
 ylabel('Current (A)')
 title('Current vs Inclusion Conductivity')
 saveas(gcf,'Figure7')
